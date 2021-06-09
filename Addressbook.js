@@ -3,8 +3,8 @@ const addressRegex = RegExp('^[A-Za-z0-9/,]{4,}$');
 const zipRegex = RegExp('^[1-9]{1}[0-9]{5}$');
 const phoneRegex = RegExp('^[1-9]{1}[0-9]{9}$');
 const emailRegex = RegExp('^[a-zA-Z0-9+_-]+([.][a-zA-Z0-9]+)*@([a-zA-Z0-9]+)([.][a-z]+)?[.][a-z]{2,}$');
-class Contact {
 
+class Contact {
     constructor(...params) {
         if (!nameRegex.test(params[0])) throw "first name is invalid"; {
             this.firstName = params[0];
@@ -21,7 +21,7 @@ class Contact {
         if (!addressRegex.test(params[4])) throw "state is invalid"; {
             this.state = params[4];
         }
-        if (!zipRegex.test(params[4])) throw "zip is invalid"; {
+        if (!zipRegex.test(params[5])) throw "zip is invalid"; {
             this.zip = params[5];
         }
         if (!phoneRegex.test(params[6])) throw "phoneNumber is invalid"; {
@@ -33,9 +33,13 @@ class Contact {
     }
 }
 
+let addressbookArray = [];
 try {
-    let contact = new Contact("ajay", "Dhalpe", "Panvel", "Panvel", "Mah", "502398", "8467387478", "ajay@gmail.com");
-    console.log(contact);
+    let contact = new Contact("Ajay", "Dhalpe", "Panvel", "Panvel", "Mahara", "502398", "8467387478", "ajay@gmail.com");
+    let contact1 = new Contact("Vijay", "Dhalpe", "Panvel", "Navi Mumbai", "Mahara", "502598", "8467387677", "vijay@gmail.com");
+    addressbookArray.push(contact);
+    addressbookArray.push(contact1);
 } catch (e) {
     console.error(e);
 }
+console.log(addressbookArray);
