@@ -34,12 +34,21 @@ class Contact {
 }
 
 let addressbookArray = [];
-try {
-    let contact = new Contact("Ajay", "Dhalpe", "Panvel", "Panvel", "Mahara", "502398", "8467387478", "ajay@gmail.com");
-    let contact1 = new Contact("Vijay", "Dhalpe", "Panvel", "Navi Mumbai", "Mahara", "502598", "8467387677", "vijay@gmail.com");
-    addressbookArray.push(contact);
-    addressbookArray.push(contact1);
-} catch (e) {
-    console.error(e);
+
+function addContacts(firstName, lastName, address, city, state, zip, phoneNumber, email) {
+    try {
+        let contact = new Contact(firstName, lastName, address, city, state, zip, phoneNumber, email);
+        addressbookArray.push(contact);
+    } catch (e) {
+        console.error(e);
+    }
 }
+
+addContacts("Ajay", "Dhalpe", "Panvel", "Panvel", "Mahara", "502398", "8467387478", "ajay@gmail.com");
+addContacts("Vijay", "Dhalpe", "Panvel", "Mumbai", "Mahara", "502598", "8467387677", "vijay@gmail.com");
 console.log(addressbookArray);
+
+function findFirstName(contact) {
+    return contact.firstName.includes("Ajay")
+}
+console.log(addressbookArray.find(findFirstName));
