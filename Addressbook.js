@@ -1,3 +1,4 @@
+const prompt = require('prompt-sync')();
 const nameRegex = RegExp('^[A-Z]{1}[A-Za-z]{2,}$');
 const addressRegex = RegExp('^[A-Za-z0-9/,]{4,}$');
 const zipRegex = RegExp('^[1-9]{1}[0-9]{5}$');
@@ -33,22 +34,31 @@ class Contact {
     }
 }
 
+let choice = prompt("1.Add contact 2.exit ");
+switch (choice) {
+    case 1:
+        addContact();
+        break;
+    case 2:
+        console.log("exit");
+        break;
+}
+
 let addressbookArray = [];
 
-function addContacts(firstName, lastName, address, city, state, zip, phoneNumber, email) {
-    try {
-        let contact = new Contact(firstName, lastName, address, city, state, zip, phoneNumber, email);
-        addressbookArray.push(contact);
-    } catch (e) {
-        console.error(e);
-    }
+function addContact() {}
+let firstName = prompt("Enter the first name :");
+let lastName = prompt("Enter the last name :");
+let address = prompt("Enter the address :");
+let city = prompt("Enter the city:");
+let state = prompt("Enter the state :");
+let zip = prompt("Enter the zip code :")
+let phoneNumber = prompt("Enter the phone Number :");
+let email = prompt("Enter the emailId :");
+try {
+    var contact = new Contact(firstName, lastName, address, city, state, zip, phoneNumber, email);
+    addressbookArray.push(contact);
+    console.log(addressbookArray);
+} catch (e) {
+    console.error(e);
 }
-
-addContacts("Ajay", "Dhalpe", "Panvel", "Panvel", "Mahara", "502398", "8467387478", "ajay@gmail.com");
-addContacts("Vijay", "Dhalpe", "Panvel", "Mumbai", "Mahara", "502598", "8467387677", "vijay@gmail.com");
-console.log(addressbookArray);
-
-function findFirstName(contact) {
-    return contact.firstName.includes("Ajay")
-}
-console.log(addressbookArray.find(findFirstName));
