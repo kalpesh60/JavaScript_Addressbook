@@ -32,6 +32,18 @@ class Contact {
             this.email = params[7];
         }
     }
+
+    toString() {
+        return "First Name: " + this.firstName +
+            ", Last Name: " + this.lastName +
+            "\nAddress: " + this.address +
+            ", City: " + this.city +
+            ", State: " + this.state +
+            ", Zip: " + this.zip +
+            "\nPhone Number: " + this.phoneNumber +
+            ", Email: " + this.email;
+    }
+
 }
 
 function editContact() {
@@ -109,10 +121,17 @@ function countContactsWithState() {
     console.log("Count by State " + stateCount);
 }
 
+function sortByName() {
+    for (let details in addressBookArray) {
+        addressBookArray.sort(details.firstName);
+    }
+    addressBookArray.forEach(contact => console.log(contact.toString()));
+}
+
 let addressBookArray = [];
 let choice = 0;
 do {
-    choice = prompt("Enter 1.Add Contact 2.Edit Contact 3.Delete Contact 4.Count Contact 5.Search By City 6.Search By State 7.View By City 8.View By State 9.count by City 10.count By State ");
+    choice = prompt("Enter 1.Add Contact 2.Edit Contact 3.Delete Contact 4.Count Contact 5.Search By City 6.Search By State 7.View By City 8.View By State 9.count by City 10.count By State 11.Sort ");
     if (choice == 1) {
         let firstName = prompt("Enter the first name :");
         if (addressBookArray.find((contact) => (contact.firstName) == (firstName))) {
@@ -151,5 +170,7 @@ do {
         countContactsWithCity();
     } else if (choice == 10) {
         countContactsWithState();
+    } else if (choice == 11) {
+        sortByName();
     }
 } while (choice != 0);
