@@ -128,10 +128,25 @@ function sortByName() {
     addressBookArray.forEach(contact => console.log(contact.toString()));
 }
 
+function sortByCity() {
+    let citySort = addressBookArray.filter(contact => contact.city !== null).map(contact => contact.city).sort();
+    citySort.forEach(city => { console.log(addressBookArray.filter(contact => contact.city == city)) });
+}
+
+function sortByState() {
+    let stateSort = addressBookArray.filter(contact => contact.state !== null).map(contact => contact.state).sort();
+    stateSort.forEach(state => { console.log(addressBookArray.filter(contact => contact.state == state)) });
+}
+
+function sortByZip() {
+    let zipSort = addressBookArray.filter(contact => contact.zip !== null).map(contact => contact.zip).sort();
+    zipSort.forEach(zip => { console.log(addressBookArray.filter(contact => contact.zip == zip)) });
+}
+
 let addressBookArray = [];
 let choice = 0;
 do {
-    choice = prompt("Enter 1.Add Contact 2.Edit Contact 3.Delete Contact 4.Count Contact 5.Search By City 6.Search By State 7.View By City 8.View By State 9.count by City 10.count By State 11.Sort ");
+    choice = prompt("Enter 1.Add Contact 2.Edit Contact 3.Delete Contact 4.Count Contact\n 5.Search By City 6.Search By State 7.View By City 8.View By State\n 9.count by City 10.count By State 11.Sort by Name 12.Sort by City\n 13.Sort by State 14.Sort by Zip ");
     if (choice == 1) {
         let firstName = prompt("Enter the first name :");
         if (addressBookArray.find((contact) => (contact.firstName) == (firstName))) {
@@ -172,5 +187,11 @@ do {
         countContactsWithState();
     } else if (choice == 11) {
         sortByName();
+    } else if (choice == 12) {
+        sortByCity();
+    } else if (choice == 13) {
+        sortByState();
+    } else if (choice == 14) {
+        sortByZip();
     }
 } while (choice != 0);
