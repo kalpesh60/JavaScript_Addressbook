@@ -81,10 +81,20 @@ function searchContactByState() {
     return addressBookArray.filter((contact) => contact.state == state);
 }
 
+function viewContactByCity() {
+    let city = prompt("Enter city: ");
+    return addressBookArray.filter((contact) => contact.city == city);
+}
+
+function viewContactByState() {
+    let state = prompt("Enter State: ");
+    return addressBookArray.filter((contact) => contact.state == state);
+}
+
 let addressBookArray = [];
 let choice = 0;
 do {
-    choice = prompt("Enter 1.Add Contact 2.Edit Contact 3.Delete Contact 4.Count Contact 5.Search By City 6.Search By State ");
+    choice = prompt("Enter 1.Add Contact 2.Edit Contact 3.Delete Contact 4.Count Contact 5.Search By City 6.Search By State 7.View By City 8.View By State ");
     if (choice == 1) {
         let firstName = prompt("Enter the first name :");
         if (addressBookArray.find((contact) => (contact.firstName) == (firstName))) {
@@ -115,5 +125,9 @@ do {
         console.log(searchContactByCity(addressBookArray));
     } else if (choice == 6) {
         console.log(searchContactByState(addressBookArray));
+    } else if (choice == 7) {
+        console.log(viewContactByCity(addressBookArray));
+    } else if (choice == 8) {
+        console.log(viewContactByState(addressBookArray));
     }
 } while (choice != 0);
