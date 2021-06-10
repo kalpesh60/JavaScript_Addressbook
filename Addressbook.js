@@ -77,6 +77,10 @@ do {
     choice = prompt("Enter 1.Add Contact 2.Edit Contact 3.Delete Contact 4.Count Contact ");
     if (choice == 1) {
         let firstName = prompt("Enter the first name :");
+        if (addressBookArray.find((contact) => (contact.firstName) == (firstName))) {
+            console.log("Contact is already exists");
+            return;
+        }
         let lastName = prompt("Enter the last name :");
         let address = prompt("Enter the address :");
         let city = prompt("Enter the city:");
