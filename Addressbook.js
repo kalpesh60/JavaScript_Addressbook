@@ -34,10 +34,42 @@ class Contact {
     }
 }
 
+function editContact() {
+    if (addressBookArray.length == 0) {
+        console.log("Addressbook is empty");
+    } else {
+        let name = prompt("Enter the name who you want to edit: ");
+        let nameChange = prompt("Enter new name: ");
+        let search = addressBookArray.find((contact) => contact.firstName == name);
+        if (search == undefined) {
+            console.log("No such contact");
+        } else {
+            addressBookArray.find((contact) => contact.firstName == name).firstName = nameChange;
+            console.log(addressBookArray);
+        }
+    }
+}
+
+function deleteContact() {
+    if (addressBookArray.length == 0) {
+        console.log("Addressbook is empty");
+    } else {
+        let name = prompt("Enter the name who you want to delete: ");
+        let search = addressBookArray.find((contact) => contact.firstName == name);
+        if (search == undefined) {
+            console.log("No such contact");
+        } else {
+            addressBookArray.pop(addressBookArray.find((contact) => contact.firstName == name));
+            console.log("Deleted successfully!")
+            console.log(addressBookArray);
+        }
+    }
+}
+
 let addressBookArray = [];
 let choice = 0;
 do {
-    choice = prompt("Enter 1.Add contact 2.Edit Contact 0.Exit: ");
+    choice = prompt("Enter 1.Add contact 2.Edit Contact 3.Delete contact 4.Exit ");
     if (choice == 1) {
         let firstName = prompt("Enter the first name :");
         let lastName = prompt("Enter the last name :");
@@ -56,21 +88,7 @@ do {
         }
     } else if (choice == 2) {
         editContact();
+    } else if (choice == 3) {
+        deleteContact();
     }
 } while (choice != 0);
-
-function editContact() {
-    if (addressBookArray.length == 0) {
-        console.log("Addressbook is empty");
-    } else {
-        let name = prompt("Enter the name who you want to edit: ");
-        let nameChange = prompt("Enter new name: ");
-        let search = addressBookArray.find((contact) => contact.firstName == name);
-        if (search == undefined) {
-            console.log("No such contact");
-        } else {
-            addressBookArray.find((contact) => contact.firstName == name).firstName = nameChange;
-            console.log(addressBookArray);
-        }
-    }
-}
