@@ -91,10 +91,28 @@ function viewContactByState() {
     return addressBookArray.filter((contact) => contact.state == state);
 }
 
+function countContacts(counter, contact) {
+    if (contact !== null)
+        counter++;
+    return counter;
+}
+
+function countContactsWithCity() {
+    let cityCount = prompt("Enter city name :");
+    cityCount = addressBookArray.filter(contact => contact.city !== null).map(contact => contact).reduce(countContacts, 0);
+    console.log("Count by City " + cityCount);
+}
+
+function countContactsWithState() {
+    let stateCount = prompt("Enter state name :");
+    stateCount = addressBookArray.filter(contact => contact.state !== null).map(contact => contact).reduce(countContacts, 0);
+    console.log("Count by State " + stateCount);
+}
+
 let addressBookArray = [];
 let choice = 0;
 do {
-    choice = prompt("Enter 1.Add Contact 2.Edit Contact 3.Delete Contact 4.Count Contact 5.Search By City 6.Search By State 7.View By City 8.View By State ");
+    choice = prompt("Enter 1.Add Contact 2.Edit Contact 3.Delete Contact 4.Count Contact 5.Search By City 6.Search By State 7.View By City 8.View By State 9.count by City 10.count By State ");
     if (choice == 1) {
         let firstName = prompt("Enter the first name :");
         if (addressBookArray.find((contact) => (contact.firstName) == (firstName))) {
@@ -129,5 +147,9 @@ do {
         console.log(viewContactByCity(addressBookArray));
     } else if (choice == 8) {
         console.log(viewContactByState(addressBookArray));
+    } else if (choice == 9) {
+        countContactsWithCity();
+    } else if (choice == 10) {
+        countContactsWithState();
     }
 } while (choice != 0);
