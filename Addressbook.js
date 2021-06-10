@@ -66,10 +66,15 @@ function deleteContact() {
     }
 }
 
+function countContacts() {
+    let count = addressBookArray.reduce(count => count += 1, 0);
+    console.log("Number Of contacts in adressBook is : " + count);
+}
+
 let addressBookArray = [];
 let choice = 0;
 do {
-    choice = prompt("Enter 1.Add contact 2.Edit Contact 3.Delete contact 4.Exit ");
+    choice = prompt("Enter 1.Add Contact 2.Edit Contact 3.Delete Contact 4.Count Contact ");
     if (choice == 1) {
         let firstName = prompt("Enter the first name :");
         let lastName = prompt("Enter the last name :");
@@ -90,5 +95,7 @@ do {
         editContact();
     } else if (choice == 3) {
         deleteContact();
+    } else if (choice == 4) {
+        countContacts();
     }
 } while (choice != 0);
