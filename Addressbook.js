@@ -71,10 +71,20 @@ function countContacts() {
     console.log("Number Of contacts in adressBook is : " + count);
 }
 
+function searchContactByCity() {
+    let city = prompt("Enter city: ");
+    return addressBookArray.filter((contact) => contact.city == city);
+}
+
+function searchContactByState() {
+    let state = prompt("Enter State: ");
+    return addressBookArray.filter((contact) => contact.state == state);
+}
+
 let addressBookArray = [];
 let choice = 0;
 do {
-    choice = prompt("Enter 1.Add Contact 2.Edit Contact 3.Delete Contact 4.Count Contact ");
+    choice = prompt("Enter 1.Add Contact 2.Edit Contact 3.Delete Contact 4.Count Contact 5.Search By City 6.Search By State ");
     if (choice == 1) {
         let firstName = prompt("Enter the first name :");
         if (addressBookArray.find((contact) => (contact.firstName) == (firstName))) {
@@ -101,5 +111,9 @@ do {
         deleteContact();
     } else if (choice == 4) {
         countContacts();
+    } else if (choice == 5) {
+        console.log(searchContactByCity(addressBookArray));
+    } else if (choice == 6) {
+        console.log(searchContactByState(addressBookArray));
     }
 } while (choice != 0);
